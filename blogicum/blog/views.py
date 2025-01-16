@@ -4,7 +4,6 @@ from django.http import Http404
 from blog.models import Post, Category
 
 
-
 def index(request):
 
     posts = Post.objects.filter(
@@ -44,7 +43,7 @@ def category_posts(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
     if not category.is_published:
         raise Http404("Категория не опубликована.")
-    
+
     template = 'blog/category.html'
 
     posts = (
